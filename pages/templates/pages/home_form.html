@@ -1,4 +1,9 @@
-<form action="{% url 'pages:contact' %}" method="post">
+{% comment %} <form action="{% url 'pages:contact' %}" method="post"> {% endcomment %}
+<form 
+    hx-post="{% url 'pages:contact' %}"
+    hx-target="this"
+    hx-swap="outerHTML"
+>
         {% csrf_token %}                
         <div class="form-group row">
             <div class="form-group col-2">
