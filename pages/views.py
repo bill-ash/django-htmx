@@ -1,14 +1,15 @@
 from django.shortcuts import render
-from django.urls import reverse
 from .models import Contact 
 from .forms import ContactForm
- 
+from django.contrib import messages  
 
 def home_view(request): 
     if request.POST:
         form = ContactForm(request.POST)
         if form.is_valid(): 
             form.save()
-            return render(request, 'pages/home.html')
+            messages.success(request, 'Contact form submitted!')
     else: 
-        return render(request, 'pages/home.html')
+        form = ContactForm()
+    
+    return render(request, 'pages/home.html', {'form': form})
