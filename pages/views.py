@@ -4,12 +4,13 @@ from .forms import ContactForm
 from django.contrib import messages  
 
 def home_view(request): 
-    if request.POST:
-        form = ContactForm(request.POST)
-        if form.is_valid(): 
-            form.save()
-            messages.success(request, 'Contact form submitted!')
-    else: 
-        form = ContactForm()
-    
+    form = ContactForm()
     return render(request, 'pages/home.html', {'form': form})
+
+def homeform_view(request): 
+    form = ContactForm(request.POST)
+    if form.is_valid(): 
+        form.save()
+        messages.success(request, 'Contact form submitted!')
+    
+    return render(request, 'pages/home_form.html', {'form': form})
