@@ -1,0 +1,1 @@
+Using htmx with django. 
