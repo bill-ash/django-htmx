@@ -9,6 +9,7 @@ def home_view(request):
 
 def homeform_view(request): 
     form = ContactForm(request.POST)
+    
     if form.is_valid(): 
         form.save()
         messages.success(request, 'Contact form submitted!')
